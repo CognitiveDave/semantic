@@ -1,6 +1,8 @@
 <template>
-    <text-highlight :queries="queries">{{ description }}</text-highlight>
-
+    <div>
+        <h1>{{ msg }}</h1>
+        <text-highlight :queries="queries">{{ description }}</text-highlight>
+    </div>
 </template>
 
 
