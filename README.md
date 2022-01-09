@@ -8,6 +8,7 @@ cd to the semantic folder
 brew install node
 node -v - just make sure node is installed correctly
 npm -v - just make sure npm is installed
+npm install
 npm install -g @vue/cli - install the vue.js command line
 vue upgrade - because the code base was written with the current version of tools - vue upgrade will update dependencies and configuration
 npm run build - to create the ./dist folder and build the chunks
