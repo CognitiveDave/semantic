@@ -1,0 +1,6 @@
+Flask==1.1.2
+gensim==4.1.2
+nltk==3.6.5
+rake_nltk==1.0.6
+textblob==0.17.1
+textstat==0.7.2
