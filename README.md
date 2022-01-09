@@ -1,5 +1,5 @@
 # semantic
-Semantic highlighting demo project.  The backend is provided by Flask with the frontend provided by Vue.js
+Semantic highlighting demo project.  The backend is provided by Python Flask with the frontend provided by Vue.js
 
 ## Project setup
 ```
