@@ -4,3 +4,7 @@ nltk==3.6.5
 rake_nltk==1.0.6
 textblob==0.17.1
 textstat==0.7.2
+uvicorn[standard]
+fastapi
+jinga2
+
