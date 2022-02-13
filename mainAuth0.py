@@ -23,7 +23,7 @@ async def home():
     return FileResponse("index.html") 
 
 @app.get("/api/public")
-def public():
+async def public():
     """No access token required to access this route"""
 
     result = {
@@ -36,7 +36,7 @@ def public():
     return JSONResponse(content=json_compatible)
 
 @app.get("/api/private")
-def private(response: Response, token: str = Depends(token_auth_scheme)):  # 👈 updated code
+async def private(response: Response, token: str = Depends(token_auth_scheme)):  # 👈 updated code
     """A valid access token is required to access this route"""
  
     result = VerifyToken(token.credentials).verify() 
