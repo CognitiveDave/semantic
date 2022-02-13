@@ -2,11 +2,12 @@
 node_modules
 /dist
 .config
-
+gettoken.py
+jwt_test.py
 # local env files
 .env.local
 .env.*.local
-
+.pyc
 # Log files
 npm-debug.log*
 yarn-debug.log*

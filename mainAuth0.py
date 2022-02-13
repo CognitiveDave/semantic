@@ -3,13 +3,15 @@ Python FastAPI Auth0 integration example
 """
 import uvicorn 
 from fastapi import FastAPI
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, Response, status
 from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.encoders import jsonable_encoder
 from fastapi import Depends, FastAPI  # 👈 new imports
 from fastapi.security import HTTPBearer  # 👈 new imports
 token_auth_scheme = HTTPBearer()  # 👈 new code
+from utils import VerifyToken
+
 
 # Creates app instance
 app = FastAPI()
@@ -34,11 +36,17 @@ def public():
     return JSONResponse(content=json_compatible)
 
 @app.get("/api/private")
-def private(token: str = Depends(token_auth_scheme)):
+def private(response: Response, token: str = Depends(token_auth_scheme)):  # 👈 updated code
     """A valid access token is required to access this route"""
  
-    result = token.credentials
+    result = VerifyToken(token.credentials).verify()  # 👈 updated code
 
+    # 👇 new code
+    if result.get("status"):
+       response.status_code = status.HTTP_400_BAD_REQUEST
+       return result
+    # 👆 new code
+ 
     return result
 
 
