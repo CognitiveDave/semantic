@@ -14,13 +14,12 @@ from utils import VerifyToken
 
 
 # Creates app instance
+
 app = FastAPI()
-appVue = FastAPI()
-appVue.mount("/", StaticFiles(directory="./dist",html=True), name="static")
- 
-@appVue.get("/")
+
+@app.get("/")
 async def home():
-    return FileResponse("index.html") 
+    return FileResponse("./dist/index.html") 
 
 @app.get("/api/public")
 async def public():
@@ -46,7 +45,7 @@ async def private(response: Response, token: str = Depends(token_auth_scheme)): 
        return result
  
     return result
-
+ 
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)
