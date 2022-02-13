@@ -7,9 +7,9 @@ from fastapi import FastAPI, Request, Response, status
 from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.encoders import jsonable_encoder
-from fastapi import Depends, FastAPI  # 👈 new imports
-from fastapi.security import HTTPBearer  # 👈 new imports
-token_auth_scheme = HTTPBearer()  # 👈 new code
+from fastapi import Depends, FastAPI  
+from fastapi.security import HTTPBearer  
+token_auth_scheme = HTTPBearer() 
 from utils import VerifyToken
 
 
@@ -39,13 +39,11 @@ def public():
 def private(response: Response, token: str = Depends(token_auth_scheme)):  # 👈 updated code
     """A valid access token is required to access this route"""
  
-    result = VerifyToken(token.credentials).verify()  # 👈 updated code
+    result = VerifyToken(token.credentials).verify() 
 
-    # 👇 new code
     if result.get("status"):
        response.status_code = status.HTTP_400_BAD_REQUEST
        return result
-    # 👆 new code
  
     return result
 
