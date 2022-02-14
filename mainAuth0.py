@@ -12,14 +12,9 @@ from fastapi.security import HTTPBearer
 token_auth_scheme = HTTPBearer() 
 from utils import VerifyToken
 
-
 # Creates app instance
 
 app = FastAPI()
-
-@app.get("/")
-async def home():
-    return FileResponse("./dist/index.html") 
 
 @app.get("/api/public")
 async def public():

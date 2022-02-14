@@ -8,6 +8,8 @@ jwt_test.py
 .env.local
 .env.*.local
 .pyc
+.pem
+.ssh
 # Log files
 npm-debug.log*
 yarn-debug.log*

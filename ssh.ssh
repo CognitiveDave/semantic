@@ -1,0 +1,1 @@
+ssh -i "semantic.pem" ubuntu@ec2-54-77-166-148.eu-west-1.compute.amazonaws.com
