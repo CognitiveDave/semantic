@@ -11,10 +11,22 @@ from fastapi import Depends, FastAPI
 from fastapi.security import HTTPBearer  
 token_auth_scheme = HTTPBearer() 
 from utils import VerifyToken
+from fastapi.middleware.cors import CORSMiddleware
+
+origins = ["*"]
+
 
 # Creates app instance
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.get("/api/public")
 async def public():
@@ -41,6 +53,9 @@ async def private(response: Response, token: str = Depends(token_auth_scheme)): 
  
     return result
  
+@app.api_route("/{path_name:path}", methods=["GET"])
+async def catch_all(request: Request, path_name: str):
+    return {"request_method": request.method, "path_name": path_name} 
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)
