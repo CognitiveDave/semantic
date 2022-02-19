@@ -1,6 +1,0 @@
-{
-  "domain": "mlexperience.eu.auth0.com",
-  "clientId": "kKWMYTUjJwbRQh8tEGVoudMmODo95hKM",
-  "audience": "http://www.justresumes.net:8000/api/private",
-  "serverUrl": "https://www.justresumes.net:8000"
-}
